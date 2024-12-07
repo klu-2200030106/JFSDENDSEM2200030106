@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   
+     <bean id="customerbean" class="AutoWritingConstructorDI.Customer">
+    <constructor-arg value="5001"></constructor-arg>
+     <constructor-arg value="Rohith Kumar"></constructor-arg>
+     <constructor-arg value="7893417785"></constructor-arg>
+     <constructor-arg ref="orderbean"></constructor-arg>
+    </bean>
+    
+     <bean id="orderbean" class="AutoWritingConstructorDI.Order">
+    <constructor-arg value="101"></constructor-arg>
+     <constructor-arg value="15-08-2024"></constructor-arg>
+     <constructor-arg value="250.75"></constructor-arg>
+    </bean>
+    
+    
+    <!-- Constructor Injection -->
+    <bean id="studentBean1" class="EXP4.Student">
+        <constructor-arg value="S001"/>
+        <constructor-arg value="John Doe"/>
+        <constructor-arg value="Male"/>
+        <constructor-arg value="20"/>
+        <constructor-arg>
+            <bean class="java.util.Date">
+                <constructor-arg value="2003/06/15"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <!-- Setter Injection -->
+    <bean id="studentBean2" class="EXP4.Student">
+        <property name="studentId" value="S002"/>
+        <property name="name" value="Jane Smith"/>
+        <property name="gender" value="Female"/>
+        <property name="age" value="22"/>
+        <property name="dateOfBirth">
+            <bean class="java.util.Date">
+                <constructor-arg value="2001/09/20"/>
+            </bean>
+        </property>
+    </bean>
+    
+    
+    <bean id="bike" class="AutoWiring.Bike"></bean>
+    <bean id="car" class="AutoWiring.Car"></bean>
+
+  
+    <bean id="journey" class="AutoWiring.Journey">
+        <property name="vehicle" ref="car"/> <!-- Switch between bike or car -->
+    </bean>
+    
+    
+    
+</beans>
